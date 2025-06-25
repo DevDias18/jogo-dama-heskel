@@ -1,7 +1,6 @@
-module Board where
+module BoardUtils where
 
 import Types
-import Rules (isInsideBoard) 
 
 initialBoard :: Board
 initialBoard = 
@@ -17,7 +16,7 @@ initialBoard =
 
 getPieceAt :: Board -> Position -> Maybe Piece
 getPieceAt board (row, col)
-    | isInsideBoard (row, col) = board !! row !! col
+    | row >= 0 && row < 8 && col >= 0 && col < 8 = board !! row !! col
     | otherwise = Nothing
 
 setPieceAt :: Board -> Position -> Maybe Piece -> Board
